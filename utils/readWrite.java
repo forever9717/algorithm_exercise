@@ -32,4 +32,28 @@ public class readWrite {
             System.out.println("write_matrix_into_txt write wrong");
         }
     }
+
+
+    public static void write_vector_into_txt(String folder, String file_name, int[] vector) {
+        String path = absolute_path + "/" + folder + "/";
+        File file = new File(path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        path += file_name + ".txt";
+        try {
+            file = new File(path);
+            FileOutputStream fileOutputStream = new FileOutputStream(file); 
+            
+            int length = vector.length;
+
+            for (int i=0; i<length; i++) {
+                fileOutputStream.write((vector[i]+",").getBytes());
+            }
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("write_matrix_into_txt write wrong");
+        }
+    }
 }
